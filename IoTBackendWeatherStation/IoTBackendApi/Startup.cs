@@ -4,6 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using AutoMapper;
+using IoTBackendApi.Models.Configuration;
+using IoTBackendApi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -57,6 +60,11 @@ namespace IoTBackendApi
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
+
+            services.AddAutoMapper();
+            services.Configure<StorageOptions>(options => Configuration.Bind("StorageOptions", options));
+            services.AddSingleton<IStorageService, BlobStorageService>();
+            services.AddTransient<IIotDataService, IotDataService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
