@@ -32,6 +32,7 @@ namespace IoTBackendApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddSingleton<IConfiguration>(Configuration);
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
@@ -60,7 +61,7 @@ namespace IoTBackendApi
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
-
+            
             services.AddAutoMapper();
             services.Configure<StorageOptions>(options => Configuration.Bind("StorageOptions", options));
             services.AddSingleton<IStorageService, BlobStorageService>();

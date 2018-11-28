@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IoTBackendApi.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace IoTBackendApi.Controllers
 {
@@ -11,11 +15,20 @@ namespace IoTBackendApi.Controllers
     [ApiController]
     public class DevicesController : ControllerBase
     {
+        private IIotDataService _iotDataService;
+        private IConfiguration Configuration;
+
+        public DevicesController(IIotDataService iotDataService, IConfiguration configuration)
+        {
+            _iotDataService = iotDataService;
+            Configuration = configuration;
+        }
+
         // GET: api/GetDevices
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return await _iotDataService.GetDevices();
         }
 
         // GET: api/GetDevices/5

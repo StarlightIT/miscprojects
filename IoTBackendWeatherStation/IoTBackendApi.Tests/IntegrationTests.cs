@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using IoTBackendApi.Models.Configuration;
+using IoTBackendApi.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
@@ -13,6 +15,8 @@ namespace IoTBackendApi.Tests
         public ServiceCollection Services;
         public ServiceProvider ServiceProvider;
         public IConfiguration Config;
+        public StorageOptions _storageOptions;
+        public IIotDataService _iotDataService;
 
         [SetUp]
         public void Setup()
@@ -20,6 +24,8 @@ namespace IoTBackendApi.Tests
             Services = new ServiceCollection();
             ConfigureServices(Services);
             ServiceProvider = Services.BuildServiceProvider();
+            _iotDataService = ServiceProvider.GetService<IIotDataService>();
+            
         }
 
         protected void ConfigureServices(IServiceCollection services)
@@ -29,6 +35,11 @@ namespace IoTBackendApi.Tests
                 .AddJsonFile("appsettings.json", true, true)
                 .AddEnvironmentVariables().Build();
             services.AddOptions();
+            _storageOptions = Config.GetSection("StorageOptions").Get<StorageOptions>();
+
+            services.Configure<StorageOptions>(options => Config.Bind("StorageOptions", options));
+            services.AddSingleton<IStorageService, BlobStorageService>();
+            services.AddTransient<IIotDataService, IotDataService>();
         }
     }
 }

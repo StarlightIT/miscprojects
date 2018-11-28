@@ -8,7 +8,7 @@ namespace IoTBackendApi.Services
 {
     public interface IStorageService
     {
-        IEnumerable<string> GetDevices();
+        Task<IEnumerable<string>> GetDevices();
 
         IEnumerable<string> GetSensors();
 

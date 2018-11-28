@@ -11,9 +11,9 @@ namespace IoTBackendApi.Services
 
         public IotDataService(IStorageService storageService) => _storageService = storageService;
 
-        public IEnumerable<string> GetDevices()
+        public async Task<IEnumerable<string>> GetDevices()
         {
-            throw new NotImplementedException();
+            return await _storageService.GetDevices();
         }
     }
 }

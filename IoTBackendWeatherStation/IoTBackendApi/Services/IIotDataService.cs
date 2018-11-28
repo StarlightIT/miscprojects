@@ -7,6 +7,6 @@ namespace IoTBackendApi.Services
 {
     public interface IIotDataService
     {
-        IEnumerable<string> GetDevices();
+        Task<IEnumerable<string>> GetDevices();
     }
 }
