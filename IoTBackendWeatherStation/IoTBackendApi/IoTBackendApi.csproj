@@ -9,7 +9,6 @@
     <UserSecretsId>300f6164-521a-4d06-8310-b3608b39e202</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Models\Api\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

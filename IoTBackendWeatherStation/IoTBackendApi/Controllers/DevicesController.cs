@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IoTBackendApi.Models.Domain;
 using IoTBackendApi.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,36 +25,22 @@ namespace IoTBackendApi.Controllers
             Configuration = configuration;
         }
 
-        // GET: api/GetDevices
+        /// <summary>
+        /// Get a list of supported devices
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<string>> Get()
         {
             return await _iotDataService.GetDevices();
         }
 
-        // GET: api/GetDevices/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}/data/temperature/{date}")]
+        public async Task<Temperature> GetTemperature(string id, DateTime date)
         {
-            return "value";
-        }
+            var temperature = await _iotDataService.GetTemperature(id, date);
 
-        // POST: api/GetDevices
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT: api/GetDevices/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return new Temperature();
         }
     }
 }

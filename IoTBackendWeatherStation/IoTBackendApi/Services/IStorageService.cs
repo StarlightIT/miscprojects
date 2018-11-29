@@ -12,9 +12,9 @@ namespace IoTBackendApi.Services
 
         IEnumerable<string> GetSensors();
 
-        DateRange GetAvailableDataRanges();
+        Task<DateRange> GetAvailableDataRanges(string deviceId, string sensorId);
 
-        DateRange GetAvailableArchiveDateRanges();
+        Task<DateRange> GetAvailableArchiveDateRanges(string deviceId, string sensorId);
 
         
     }
