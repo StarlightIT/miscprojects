@@ -35,12 +35,22 @@ namespace IoTBackendApi.Controllers
             return await _iotDataService.GetDevices();
         }
 
-        [HttpGet("{id}/data/temperature/{date}")]
-        public async Task<Temperature> GetTemperature(string id, DateTime date)
+        [HttpGet("{deviceId}/sensors")]
+        public async Task<IEnumerable<string>> GetSensors(string deviceId)
         {
-            var temperature = await _iotDataService.GetTemperature(id, date);
+            return await _iotDataService.GetSensors(deviceId);
+        }
 
-            return new Temperature();
+        [HttpGet("{deviceId}/data/{date}")]
+        public async Task<IEnumerable<SensorResult>> GetSensorDataForDate(string deviceId, DateTime date)
+        {
+            return await _iotDataService.GetSensorDataForDate(deviceId, date);
+        }
+
+        [HttpGet("{deviceId}/data/{date}/{sensorId}")]
+        public async Task<SensorResult> GetSensorDataForDateAndSensor(string deviceId, DateTime date, string sensorId)
+        {
+            return await _iotDataService.GetSensorDataForDateAndSensor(deviceId, date, sensorId);
         }
     }
 }

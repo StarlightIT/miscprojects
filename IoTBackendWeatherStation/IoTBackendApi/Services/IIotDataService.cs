@@ -10,6 +10,8 @@ namespace IoTBackendApi.Services
     {
         Task<IEnumerable<string>> GetDevices();
 
-        Task<Temperature> GetTemperature(string deviceId, DateTime date);
+        Task<SensorResult> GetSensorDataForDateAndSensor(string deviceId, DateTime date, string sensorId);
+        Task<IEnumerable<string>> GetSensors(string deviceId);
+        Task<IEnumerable<SensorResult>> GetSensorDataForDate(string deviceId, DateTime date);
     }
 }

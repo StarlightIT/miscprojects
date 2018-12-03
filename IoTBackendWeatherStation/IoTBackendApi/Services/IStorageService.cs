@@ -10,12 +10,13 @@ namespace IoTBackendApi.Services
     {
         Task<IEnumerable<string>> GetDevices();
 
-        IEnumerable<string> GetSensors();
+        Task<IEnumerable<string>> GetSensors(string deviceId);
 
-        Task<DateRange> GetAvailableDataRanges(string deviceId, string sensorId);
+        Task<IEnumerable<DateTime>> GetAvailableSensorDates(string deviceId, string sensorId);
 
-        Task<DateRange> GetAvailableArchiveDateRanges(string deviceId, string sensorId);
-
+        Task<IEnumerable<SensorData>> GetSensorDataForDate(string deviceId, DateTime date, string sensorId);
         
+
+        //Task<DateRange> GetAvailableArchiveDataDates(string deviceId, string sensorId);
     }
 }

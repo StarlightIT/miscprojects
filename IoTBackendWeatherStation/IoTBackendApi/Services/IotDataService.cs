@@ -17,12 +17,43 @@ namespace IoTBackendApi.Services
             return await _storageService.GetDevices();
         }
 
-        public async Task<Temperature> GetTemperature(string deviceId, DateTime date)
+        public async Task<IEnumerable<string>> GetSensors(string deviceId)
         {
-            var availableDateRanges = await _storageService.GetAvailableDataRanges(deviceId, "temperature");
-            //var availableArchiveDateRanges = _storageService.GetAvailableArchiveDateRanges(deviceId, "temperature");
-
-            return null;
+            return await _storageService.GetSensors(deviceId);
         }
+
+        public async Task<IEnumerable<SensorResult>> GetSensorDataForDate(string deviceId, DateTime date)
+        {
+            var sensorResults = new List<SensorResult>();
+            var sensors = await GetSensors(deviceId);
+
+            foreach (var sensorId in sensors)
+            {
+                var sensorResult = await GetSensorDataForDateAndSensor(deviceId, date, sensorId);
+                sensorResults.Add(sensorResult);
+            }
+
+            return sensorResults;
+        }
+
+        public async Task<SensorResult> GetSensorDataForDateAndSensor(string deviceId, DateTime date, string sensorId)
+        {
+            var availableDateRanges = await _storageService.GetAvailableSensorDates(deviceId, sensorId);
+            if (!availableDateRanges.Contains(date))
+            {
+                return null;
+            }
+
+            var sensorData = await _storageService.GetSensorDataForDate(deviceId, date, sensorId);
+            return new SensorResult
+            {
+                DeviceId = deviceId,
+                SensorId =  sensorId,
+                Date = date,
+                SensorData = sensorData.ToList(),
+            };
+        }
+
+        
     }
 }
