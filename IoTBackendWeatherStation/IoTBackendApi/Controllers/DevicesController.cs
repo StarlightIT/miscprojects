@@ -12,6 +12,9 @@ using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace IoTBackendApi.Controllers
 {
+    /// <summary>
+    /// API Controller for getting information and ata from IoT devices
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class DevicesController : ControllerBase
