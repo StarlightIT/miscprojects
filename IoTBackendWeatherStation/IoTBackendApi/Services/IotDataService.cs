@@ -30,6 +30,10 @@ namespace IoTBackendApi.Services
             foreach (var sensorId in sensors)
             {
                 var sensorResult = await GetSensorDataForDateAndSensor(deviceId, date, sensorId);
+                if (sensorResult == null)
+                {
+                    continue;
+                }
                 sensorResults.Add(sensorResult);
             }
 
