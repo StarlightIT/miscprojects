@@ -16,41 +16,76 @@ namespace IoTBackendApi.Controllers
     [ApiController]
     public class DevicesController : ControllerBase
     {
-        private IIotDataService _iotDataService;
-        private IConfiguration Configuration;
+        private readonly IIotDataService _iotDataService;
 
-        public DevicesController(IIotDataService iotDataService, IConfiguration configuration)
+        public DevicesController(IIotDataService iotDataService) => _iotDataService = iotDataService;
+
+        /// <summary>
+        /// Gets a list of supported devices
+        /// </summary>
+        /// <returns>The list of supported devices</returns>
+        [ProducesResponseType(200)]
+        [HttpGet]
+        public async Task<IActionResult> Get()
         {
-            _iotDataService = iotDataService;
-            Configuration = configuration;
+            var devices = await _iotDataService.GetDevices();
+            return Ok(devices);
         }
 
         /// <summary>
-        /// Get a list of supported devices
+        /// Gets a list of supported sensors for a device
         /// </summary>
+        /// <param name="deviceId">The device Id</param>
         /// <returns></returns>
-        [HttpGet]
-        public async Task<IEnumerable<string>> Get()
-        {
-            return await _iotDataService.GetDevices();
-        }
-
+        [ProducesResponseType(200)]
         [HttpGet("{deviceId}/sensors")]
-        public async Task<IEnumerable<string>> GetSensors(string deviceId)
+        public async Task<IActionResult> GetSensors(string deviceId)
         {
-            return await _iotDataService.GetSensors(deviceId);
+            var sensors = await _iotDataService.GetSensors(deviceId);
+            return Ok(sensors);
         }
 
+        /// <summary>
+        /// Gets data for all sensors for a particular device on a particular date
+        /// </summary>
+        /// <param name="deviceId">The device Id</param>
+        /// <param name="date">The date</param>
+        /// <returns>The sensor results</returns>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         [HttpGet("{deviceId}/data/{date}")]
-        public async Task<IEnumerable<SensorResult>> GetSensorDataForDate(string deviceId, DateTime date)
+        public async Task<IActionResult> GetSensorDataForDate(string deviceId, DateTime date)
         {
-            return await _iotDataService.GetSensorDataForDate(deviceId, date);
+            var sensorResults = await _iotDataService.GetSensorDataForDate(deviceId, date);
+
+            if (!sensorResults.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(sensorResults);
         }
 
+        /// <summary>
+        /// Gets the sensor data for a particular device, date, and sensor
+        /// </summary>
+        /// <param name="deviceId">The device Id</param>
+        /// <param name="date">The Date</param>
+        /// <param name="sensorId">The Sensor Id</param>
+        /// <returns>The sensor data or NotFound()</returns>
         [HttpGet("{deviceId}/data/{date}/{sensorId}")]
-        public async Task<SensorResult> GetSensorDataForDateAndSensor(string deviceId, DateTime date, string sensorId)
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> GetSensorDataForDateAndSensor(string deviceId, DateTime date, string sensorId)
         {
-            return await _iotDataService.GetSensorDataForDateAndSensor(deviceId, date, sensorId);
+            var sensorResult = await _iotDataService.GetSensorDataForDateAndSensor(deviceId, date, sensorId);
+
+            if (sensorResult == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(sensorResult);
         }
     }
 }
