@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotCleaner.Console", "RobotCleaner.Console\RobotCleaner.Console.csproj", "{5ACD0DDF-D8FA-4F02-98E8-6D8C03C4AE24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotCleaner.Lib", "RobotCleaner.Lib\RobotCleaner.Lib.csproj", "{BC63AAD1-7324-4C97-B2BB-A56172BF0CEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotCleaner.Tests", "RobotCleaner.Tests\RobotCleaner.Tests.csproj", "{A96DE806-2161-4304-83A0-FA44A679302B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5ACD0DDF-D8FA-4F02-98E8-6D8C03C4AE24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ACD0DDF-D8FA-4F02-98E8-6D8C03C4AE24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ACD0DDF-D8FA-4F02-98E8-6D8C03C4AE24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ACD0DDF-D8FA-4F02-98E8-6D8C03C4AE24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC63AAD1-7324-4C97-B2BB-A56172BF0CEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC63AAD1-7324-4C97-B2BB-A56172BF0CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC63AAD1-7324-4C97-B2BB-A56172BF0CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC63AAD1-7324-4C97-B2BB-A56172BF0CEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A96DE806-2161-4304-83A0-FA44A679302B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A96DE806-2161-4304-83A0-FA44A679302B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A96DE806-2161-4304-83A0-FA44A679302B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A96DE806-2161-4304-83A0-FA44A679302B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
