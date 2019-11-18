@@ -17,7 +17,6 @@ namespace RobotCleaner.Tests
         [Fact]
         public void MoveRightTwoPlacesTest()
         {
-            _robotCleaner.SetNumberOfCommands(1);
             _robotCleaner.Move("E", 1);
             Assert.Equal(2, _robotCleaner.GetUniquePlacesCleaned());
             Assert.Equal(new Point(3,1 ), _robotCleaner.LastEndPoint);
@@ -26,7 +25,6 @@ namespace RobotCleaner.Tests
         [Fact]
         public void MoveRightThreePlacesTest()
         {
-            _robotCleaner.SetNumberOfCommands(2);
             _robotCleaner.Move("E", 1);
             _robotCleaner.Move("E", 1);
             Assert.Equal(3, _robotCleaner.GetUniquePlacesCleaned());
@@ -36,7 +34,6 @@ namespace RobotCleaner.Tests
         [Fact]
         public void MoveRightFivePlacesTest()
         {
-            _robotCleaner.SetNumberOfCommands(2);
             _robotCleaner.Move("E", 2);
             _robotCleaner.Move("E", 2);
             Assert.Equal(5, _robotCleaner.GetUniquePlacesCleaned());
@@ -46,7 +43,6 @@ namespace RobotCleaner.Tests
         [Fact]
         public void MoveLeftTwoPlacesTest()
         {
-            _robotCleaner.SetNumberOfCommands(1);
             _robotCleaner.Move("W", 1);
             Assert.Equal(2, _robotCleaner.GetUniquePlacesCleaned());
             Assert.Equal(new Point(1,1 ), _robotCleaner.LastEndPoint);
@@ -55,7 +51,6 @@ namespace RobotCleaner.Tests
         [Fact]
         public void MoveLeftThreePlacesTest()
         {
-            _robotCleaner.SetNumberOfCommands(2);
             _robotCleaner.Move("W", 1);
             _robotCleaner.Move("W", 1);
             Assert.Equal(3, _robotCleaner.GetUniquePlacesCleaned());
@@ -65,7 +60,6 @@ namespace RobotCleaner.Tests
         [Fact]
         public void MoveLeftFivePlacesTest()
         {
-            _robotCleaner.SetNumberOfCommands(2);
             _robotCleaner.Move("W", 2);
             _robotCleaner.Move("W", 2);
             Assert.Equal(5, _robotCleaner.GetUniquePlacesCleaned());
@@ -76,7 +70,6 @@ namespace RobotCleaner.Tests
         [Fact]
         public void RightFirstCombinedTwoPlacesTest()
         {
-            _robotCleaner.SetNumberOfCommands(2);
             _robotCleaner.Move("E", 1);
             _robotCleaner.Move("W", 1);
             Assert.Equal(2, _robotCleaner.GetUniquePlacesCleaned());
@@ -86,7 +79,6 @@ namespace RobotCleaner.Tests
         [Fact]
         public void LeftFirstCombinedTwoPlacesTest()
         {
-            _robotCleaner.SetNumberOfCommands(2);
             _robotCleaner.Move("W", 1);
             _robotCleaner.Move("E", 1);
             Assert.Equal(2, _robotCleaner.GetUniquePlacesCleaned());
@@ -97,7 +89,6 @@ namespace RobotCleaner.Tests
         [Fact]
         public void RightFirstCombinedTFourPlacesTest()
         {
-            _robotCleaner.SetNumberOfCommands(2);
             _robotCleaner.Move("E", 2);
             _robotCleaner.Move("W", 3);
             Assert.Equal(4, _robotCleaner.GetUniquePlacesCleaned());
@@ -107,7 +98,6 @@ namespace RobotCleaner.Tests
         [Fact]
         public void LeftFirstCombinedFourPlacesTest()
         {
-            _robotCleaner.SetNumberOfCommands(2);
             _robotCleaner.Move("W", 2);
             _robotCleaner.Move("E", 3);
             Assert.Equal(4, _robotCleaner.GetUniquePlacesCleaned());

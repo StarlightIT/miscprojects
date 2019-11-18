@@ -6,15 +6,9 @@ namespace RobotCleaner.Lib
 {
     public class RobotCleaner : IRobotCleaner
     {
-        private int NumberOfCommands { get; set; }
         private Point StartingPoint { get; set; }
         public Point LastEndPoint { get; private set; }
         private readonly HashSet<Point> _uniquePlacesCleaned = new HashSet<Point>();
-        
-        public void SetNumberOfCommands(int numberOfCommands)
-        {
-            NumberOfCommands = numberOfCommands;
-        }
 
         public void SetStartingCoordinates(int x, int y)
         {

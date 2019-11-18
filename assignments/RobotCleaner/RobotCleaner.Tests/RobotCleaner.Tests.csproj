@@ -14,6 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\RobotCleaner.Console\RobotCleaner.Console.csproj" />
       <ProjectReference Include="..\RobotCleaner.Lib\RobotCleaner.Lib.csproj" />
     </ItemGroup>
 
