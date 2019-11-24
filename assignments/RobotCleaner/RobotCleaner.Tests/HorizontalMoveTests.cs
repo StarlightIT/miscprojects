@@ -4,18 +4,21 @@ using Xunit;
 
 namespace RobotCleaner.Tests
 {
-    public class HorizontalTests
+    /**
+     * Integration tests that move the robot horizontally and verify important parameters.
+     */
+    public class HorizontalMoveTests
     {
         public Lib.RobotCleaner _robotCleaner;
 
-        public HorizontalTests()
+        public HorizontalMoveTests()
         {
             _robotCleaner = new Lib.RobotCleaner();
             _robotCleaner.SetStartingCoordinates(2,1);
         }
         
         [Fact]
-        public void MoveRightTwoPlacesTest()
+        public void MoveRightTwoPlaces()
         {
             _robotCleaner.Move("E", 1);
             Assert.Equal(2, _robotCleaner.GetUniquePlacesCleaned());
@@ -23,7 +26,7 @@ namespace RobotCleaner.Tests
         }
         
         [Fact]
-        public void MoveRightThreePlacesTest()
+        public void MoveRightThreePlaces()
         {
             _robotCleaner.Move("E", 1);
             _robotCleaner.Move("E", 1);
@@ -32,7 +35,7 @@ namespace RobotCleaner.Tests
         }
         
         [Fact]
-        public void MoveRightFivePlacesTest()
+        public void MoveRightFivePlaces()
         {
             _robotCleaner.Move("E", 2);
             _robotCleaner.Move("E", 2);
@@ -41,7 +44,7 @@ namespace RobotCleaner.Tests
         }
         
         [Fact]
-        public void MoveLeftTwoPlacesTest()
+        public void MoveLeftTwoPlaces()
         {
             _robotCleaner.Move("W", 1);
             Assert.Equal(2, _robotCleaner.GetUniquePlacesCleaned());
@@ -49,7 +52,7 @@ namespace RobotCleaner.Tests
         }
         
         [Fact]
-        public void MoveLeftThreePlacesTest()
+        public void MoveLeftThreePlaces()
         {
             _robotCleaner.Move("W", 1);
             _robotCleaner.Move("W", 1);
@@ -58,7 +61,7 @@ namespace RobotCleaner.Tests
         }
         
         [Fact]
-        public void MoveLeftFivePlacesTest()
+        public void MoveLeftFivePlaces()
         {
             _robotCleaner.Move("W", 2);
             _robotCleaner.Move("W", 2);
@@ -68,7 +71,7 @@ namespace RobotCleaner.Tests
         }
 
         [Fact]
-        public void RightFirstCombinedTwoPlacesTest()
+        public void MoveRightFirstTwoPlaces()
         {
             _robotCleaner.Move("E", 1);
             _robotCleaner.Move("W", 1);
@@ -77,7 +80,7 @@ namespace RobotCleaner.Tests
         }
         
         [Fact]
-        public void LeftFirstCombinedTwoPlacesTest()
+        public void MOveLeftFirstTwoPlaces()
         {
             _robotCleaner.Move("W", 1);
             _robotCleaner.Move("E", 1);
@@ -87,7 +90,7 @@ namespace RobotCleaner.Tests
         }
         
         [Fact]
-        public void RightFirstCombinedTFourPlacesTest()
+        public void MoveRightFirstFourPlaces()
         {
             _robotCleaner.Move("E", 2);
             _robotCleaner.Move("W", 3);
@@ -96,7 +99,7 @@ namespace RobotCleaner.Tests
         }
         
         [Fact]
-        public void LeftFirstCombinedFourPlacesTest()
+        public void MoveLeftFirstFourPlaces()
         {
             _robotCleaner.Move("W", 2);
             _robotCleaner.Move("E", 3);

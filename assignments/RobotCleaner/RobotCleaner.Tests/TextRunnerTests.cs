@@ -5,6 +5,9 @@ using Xunit;
 
 namespace RobotCleaner.Tests
 {
+    /**
+     * Integration/End to end tests to test the console I/O runner.
+     */
     public class TextRunnerTests
     {
         private readonly MemoryStream _inputMemoryStream;

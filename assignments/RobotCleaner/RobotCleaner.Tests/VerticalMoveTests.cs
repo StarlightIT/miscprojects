@@ -4,18 +4,21 @@ using Xunit;
 
 namespace RobotCleaner.Tests
 {
-    public class VerticalTests
+    /**
+     * Integration tests that move the robot vertically and verify important parameters.
+     */
+    public class VerticalMoveTests
     {
         public Lib.RobotCleaner _robotCleaner;
 
-        public VerticalTests()
+        public VerticalMoveTests()
         {
             _robotCleaner = new Lib.RobotCleaner();
             _robotCleaner.SetStartingCoordinates(2,1);
         }
 
         [Fact]
-        public void MoveUpTwoPlacesTest()
+        public void MoveUpTwoPlaces()
         {
             _robotCleaner.Move("N", 1);
             Assert.Equal(2, _robotCleaner.GetUniquePlacesCleaned());
@@ -23,7 +26,7 @@ namespace RobotCleaner.Tests
         }
         
         [Fact]
-        public void MoveUpThreePlacesTest()
+        public void MoveUpThreePlaces()
         {
             _robotCleaner.Move("N", 1);
             _robotCleaner.Move("N", 1);
@@ -32,7 +35,7 @@ namespace RobotCleaner.Tests
         }
         
         [Fact]
-        public void MoveUpFivePlacesTest()
+        public void MoveUpFivePlaces()
         {
             _robotCleaner.Move("N", 2);
             _robotCleaner.Move("N", 2);
@@ -41,7 +44,7 @@ namespace RobotCleaner.Tests
         }
         
         [Fact]
-        public void MoveDownTwoPlacesTest()
+        public void MoveDownTwoPlaces()
         {
             _robotCleaner.Move("S", 1);
             Assert.Equal(2, _robotCleaner.GetUniquePlacesCleaned());
@@ -49,7 +52,7 @@ namespace RobotCleaner.Tests
         }
         
         [Fact]
-        public void MoveDownThreePlacesTest()
+        public void MoveDownThreePlaces()
         {
             _robotCleaner.Move("S", 1);
             _robotCleaner.Move("S", 1);
@@ -58,7 +61,7 @@ namespace RobotCleaner.Tests
         }
         
         [Fact]
-        public void MoveDownFivePlacesTest()
+        public void MoveDownFivePlaces()
         {
             _robotCleaner.Move("S", 2);
             _robotCleaner.Move("S", 2);
@@ -67,7 +70,7 @@ namespace RobotCleaner.Tests
         }
         
         [Fact]
-        public void UpFirstCombinedTwoPlacesTest()
+        public void MoveUpFirstTwoPlaces()
         {
             _robotCleaner.Move("N", 1);
             _robotCleaner.Move("S", 1);
@@ -76,7 +79,7 @@ namespace RobotCleaner.Tests
         }
         
         [Fact]
-        public void DownFirstCombinedTwoPlacesTest()
+        public void MoveDownFirstTwoPlaces()
         {
             _robotCleaner.Move("S", 1);
             _robotCleaner.Move("N", 1);
@@ -85,7 +88,7 @@ namespace RobotCleaner.Tests
         }
         
         [Fact]
-        public void UpFirstCombinedTFourPlacesTest()
+        public void MoveUpFirstFourPlaces()
         {
             _robotCleaner.Move("N", 2);
             _robotCleaner.Move("S", 3);
@@ -94,7 +97,7 @@ namespace RobotCleaner.Tests
         }
         
         [Fact]
-        public void DownFirstCombinedFourPlacesTest()
+        public void MoveDownFirstFourPlaces()
         {
             _robotCleaner.Move("S", 2);
             _robotCleaner.Move("N", 3);

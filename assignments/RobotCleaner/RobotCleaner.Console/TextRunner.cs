@@ -32,14 +32,12 @@ namespace RobotCleaner.Console
 
         private void GetNumberOfCommands()
         {
-            //Output.WriteLine("Enter number of commands: ");
             var input = Input.ReadLine();
             _numberOfCommands = int.Parse(input);
         }
 
         private void SetStartingCoordinates()
         {
-            //Output.WriteLine("Enter starting coordinates: ");
             var input = Input.ReadLine();
             var start = input?.Split(' ');
             _robotCleaner.SetStartingCoordinates(int.Parse(start[0]), int.Parse(start[1]));
@@ -49,7 +47,6 @@ namespace RobotCleaner.Console
         {
             for (var i = 0; i < _numberOfCommands; i++)
             {
-                //Output.WriteLine($"Input command {i+1}: ");
                 var command = Input.ReadLine();
                 var cmdParts = command?.Split(' ');
                 _robotCleaner.Move(cmdParts[0], int.Parse(cmdParts[1]));

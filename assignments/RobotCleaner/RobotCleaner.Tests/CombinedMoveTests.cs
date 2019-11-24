@@ -4,11 +4,14 @@ using Xunit;
 
 namespace RobotCleaner.Tests
 {
-    public class CombinedTests
+    /**
+     * Integration tests to test more advanced move patterns.
+     */
+    public class CombinedMoveTests
     {
         public Lib.RobotCleaner _robotCleaner;
 
-        public CombinedTests()
+        public CombinedMoveTests()
         {
             _robotCleaner = new Lib.RobotCleaner();
         }
@@ -26,9 +29,9 @@ namespace RobotCleaner.Tests
         {
             _robotCleaner.SetStartingCoordinates(2,1);
             _robotCleaner.Move("E", 5);
-            _robotCleaner.Move("N", 5);
-            _robotCleaner.Move("W", 5);
             _robotCleaner.Move("S", 5);
+            _robotCleaner.Move("W", 5);
+            _robotCleaner.Move("N", 5);
             Assert.Equal(20, _robotCleaner.GetUniquePlacesCleaned());
             Assert.Equal(new Point(2,1), _robotCleaner.LastEndPoint);
         }
