@@ -1,0 +1,11 @@
+﻿Company name;Organizational number;Internal company name;Company type;Acquisition?;Acquisition-/registration date;Board seat;Board Members;Auditor;Parent company;Parent Share(s);Subsidiaries;Share in subsidiaries;Administered by
+"Company A;555555-0001;101;AB;YES;2015-05-23;Stockholm;""John Doe;Jane Doe"";PwC;;;""555555-0002;555555-0003"";""100%;50%"";John Smith"
+"Company B;555555-0002;102;AB;NO;2010-03-04;Stockholm;""John Doe;Jane Doe"";PwC;555555-0001;100%;""555555-0003;555555-0004;555555-0005"";;John Smith"
+"Company C;555555-0003;103;AB;NO;2000-01-01;Göteborg;""John Doe;Jane Doe"";PwC;""555555-0001;555555-0002"";""50%;50%"";;;John Smith"
+"Company D;555555-0004;104;AB;NO;2000-01-02;Malmö;""John Doe;Jane Doe"";PwC;555555-0002;100%;;;John Smith"
+"Company E;555555-0005;105;AB;NO;2000-01-03;Stockholm;""John Doe;Jane Doe"";PwC;555555-0002;100%;;;John Smith"
+"Company F;555555-0006;106;AB;NO;2000-01-04;Stockholm;""James Doe; Judith Doe"";PwC;555555-0002;100%;555555-0007;100%;John Smith"
+"Company G;555555-0007;107;AB;NO;2007-03-04;Stockholm;""John Doe;Jane Doe"";PwC;555555-0006;100%;""555555-0008;555555-0009;555555-0010"";""100%;99%;99%"";Jane Smith"
+"Company H;555555-0008;108;AB;NO;2018-03-04;Stockholm;""James Doe; Judith Doe"";PwC;555555-0007;100%;""555555-0009;555555-0010"";""1%;1%"";Jane Smith"
+"Company I;555555-0009;109;KB;NO;2004-03-03;Stockholm;""John Doe;Jane Doe"";PwC;""555555-0007;555555-0008"";""99%;1%"";;;Jane Smith"
+"Company J;555555-0010;110;HB;NO;2019-05-05;Stockholm;""John Doe;Jane Doe"";PwC;""555555-0007;555555-0008"";""99%;1%"";;;Jane Smith"
